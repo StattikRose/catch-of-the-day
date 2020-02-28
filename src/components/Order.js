@@ -45,11 +45,11 @@ export default class Order extends React.Component {
               </CSSTransition>
             </TransitionGroup>
             lbs {fish.name}
-            {formatPrice(count * fish.price)}
             <button onClick={() => this.props.removeFromOrder(key)}>
               &times;
             </button>
           </span>
+          <span className="price">{formatPrice(count * fish.price)}</span>
         </li>
       </CSSTransition>
     );
@@ -72,11 +72,11 @@ export default class Order extends React.Component {
         <h2>Your Order</h2>
         <TransitionGroup component="ul" className="order">
           {orderIds.map(this.renderOrder)}
+          <div className="total">
+            <strong>Total:</strong>
+            {formatPrice(total)}
+          </div>
         </TransitionGroup>
-        <div className="total">
-          Total:
-          <strong>{formatPrice(total)}</strong>
-        </div>
       </div>
     );
   }
